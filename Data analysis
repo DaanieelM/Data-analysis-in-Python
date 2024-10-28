@@ -4,17 +4,17 @@ import matplotlib.pyplot as plt # visualizing data
 %matplotlib inline
 import seaborn as sns
 
-# Reading data
+# Read data
 df = pd.read_csv(r"C:\Users\Daniel\Desktop\Python\Project1\Spotify Most Streamed Songs.csv")
 
 df.head()
 
 df.shape
 
-# Removing duplicates
+# Remove duplicates
 df = df.drop_duplicates()
 
-# Dropping column 'cover_url'
+# Drop column 'cover_url'
 df = df.drop(columns = 'cover_url')
 
 df.head()
@@ -24,25 +24,25 @@ df = df.rename(columns={'artist(s)_name':'artist'})
 
 df.describe()
 
-# Checking types of columns
+# Check types of columns
 df.dtypes
 
 df['streams'].dtypes
 
-# Removing NaN values
+# Remove NaN values
 df.dropna(inplace=True)
 
 print(df['streams'].max())
 
-# Changing text to NaN
+# Change text to NaN
 df['streams'] = pd.to_numeric(df['streams'], errors='coerce')
 
-# Removing NaN values
+# Remove NaN values
 df = df.dropna(subset=['streams'])
 
 df.shape
 
-# Changing data type
+# Change data type
 df['streams'] = df['streams'].astype('streams')
 
 df['streams'].dtypes
